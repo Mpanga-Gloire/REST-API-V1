@@ -3,9 +3,10 @@ const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dbConfig = require("./configs/db.config");
-const authRouter = require("./routes/auth.route");
+const authRoute = require("./routes/auth.route");
 const shippingRoute = require("./routes/shippingAddress.route");
 const productRoute = require("./routes/product.route");
+const orderRoute = require("./routes/order.route");
 
 mongoose.connect(dbConfig.DB_URL);
 const db = mongoose.connection;
@@ -27,9 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
  * ROUTERS
  */
 
-app.use("/", authRouter);
+app.use("/", authRoute);
 app.use("/", shippingRoute);
 app.use("/products", productRoute);
+app.use("/", orderRoute);
 
 /**
  * ROUTERS
