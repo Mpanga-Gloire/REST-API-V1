@@ -1,35 +1,33 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  firstName: {
+const ShippingSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
   },
   contactNumber: {
     type: String,
     required: true,
   },
-  password: {
+  street: {
     type: String,
     required: true,
-    unique: true,
   },
-  role: {
+  landmark: {
     type: String,
-    default: "USER",
+    required: true,
   },
-  orderId: {
-    type: [mongoose.SchemaTypes.ObjectId],
-    ref: "Order",
+  city: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  zipCode: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -46,4 +44,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Shipping", ShippingSchema);

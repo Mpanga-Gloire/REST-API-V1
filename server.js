@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dbConfig = require("./configs/db.config");
 const authRouter = require("./routes/auth.route");
+const shippingRoute = require("./routes/shippingAddress.route");
 
 mongoose.connect(dbConfig.DB_URL);
 const db = mongoose.connection;
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 
 app.use("/", authRouter);
+app.use("/", shippingRoute);
 
 /**
  * ROUTERS
