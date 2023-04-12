@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const dbConfig = require("./configs/db.config");
 const authRouter = require("./routes/auth.route");
 const shippingRoute = require("./routes/shippingAddress.route");
+const productRoute = require("./routes/product.route");
 
 mongoose.connect(dbConfig.DB_URL);
 const db = mongoose.connection;
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", authRouter);
 app.use("/", shippingRoute);
+app.use("/products", productRoute);
 
 /**
  * ROUTERS
